@@ -44,7 +44,13 @@ export default {
   },
   head: {
     title: 'Chris Arnold - Designer and Developer',
-    meta: [{ hid: 'description', name: 'description', content: '' }]
+    meta: [
+      {
+        hid: 'description',
+        name: 'description',
+        content: 'Chris Arnold - Designer and Developer'
+      }
+    ]
   },
   transition: {
     mode: 'in-out'
