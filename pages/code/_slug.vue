@@ -1,7 +1,20 @@
 <template>
   <transition name="reveal">
     <div class="wrapper">
-      <h1 class="page-title">Code / Experiments and Projects</h1>
+      <header class="page-header">
+        <h1 class="page-title">Code / Experiments and Projects</h1>
+        <nuxt-link
+          class="close-button"
+          to="/">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24">
+            <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
+          </svg>
+        </nuxt-link>
+      </header>
       <div class="container">
         <code-item
           v-for="project in code"
@@ -22,30 +35,29 @@
 import CodeItem from '~/components/CodeItem.vue';
 
 export default {
-  async asyncData({ app, params }) {
-    let data = await app.$axios.$post('http://localhost:1337/graphql', {
-      query: `{
-        codes(where: {
-          visible: true
-        }) {
-          _id
-          codetags {
-            title
-          }
-          description
-          slug
-          source_url
-          source_origin
-          title
-          url
-        }
-      }`
-    });
+  async asyncData({ params, store }) {
+    if (store.state.code === undefined) {
+      await store.dispatch('getCode');
+    }
 
-    const code = data.data.codes;
+    const code = store.state.code;
+
+    let selectedProject = undefined;
+
+    if (code && code.length > 0) {
+      selectedProject = code[0]._id;
+
+      if (params.slug) {
+        const project = code.filter(item => {
+          return item.slug === params.slug;
+        });
+        selectedProject = project[0]._id;
+      }
+    }
+
     return {
       code,
-      selectedProject: code[0]._id
+      selectedProject
     };
   },
   components: {
@@ -99,15 +111,30 @@ export default {
   position: relative;
 }
 
-.page-title {
-  color: #bbbbbc;
-  font-size: 1rem;
-  letter-spacing: 0.1rem;
+.page-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   margin: 0 0 60px;
-  text-transform: uppercase;
+  width: 100%;
 
   .no-js & {
     margin: 0 0 30px;
+  }
+}
+
+.page-title {
+  color: $secondary-alt-text-color;
+  font-size: 1rem;
+  letter-spacing: 0.1rem;
+  text-transform: uppercase;
+}
+
+.close-button {
+  fill: $secondary-alt-text-color;
+
+  &:hover {
+    fill: $primary-alt-text-color;
   }
 }
 </style>

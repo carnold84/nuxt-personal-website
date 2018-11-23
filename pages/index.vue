@@ -2,9 +2,9 @@
   <div class="wrapper">
     <div class="content">
       <section class="section">
-        <h1 class="heading">Chris Arnold</h1>
-        <h2 class="sub-heading">UI Designer and Developer</h2>
-        <p class="paragraph">I'm Chris Arnold, a designer and developer from Christchurch, New Zealand. I like to write clean, elegant code and partner it with clean, beautiful design and well thought out, user-friendly interfaces. I work mainly in Javascript, HTML and CSS and enjoy exploring new frameworks, tools and, mostly, new  paradigms in code, design and UX.</p>
+        <h1 class="heading">{{ home.title }}</h1>
+        <h2 class="sub-heading">{{ home.sub_title }}</h2>
+        <p class="paragraph">{{ home.description }}</p>
       </section>
     </div>
   </div>
@@ -14,11 +14,30 @@
 import ListItem from '~/components/ListItem.vue';
 
 export default {
-  async asyncData({ app }) {
-    let data = await app.$axios.$get(
-      `http://localhost:1337/code?_sort=order:asc`
-    );
-    return { code: data };
+  /* async asyncData({ app }) {
+    let data = await app.$axios.$post('http://localhost:1337/graphql', {
+      query: `{
+        homedescriptions {
+          _id
+          description
+          sub_title
+          title
+        }
+      }`
+    });
+    const homedescription = data.data.homedescriptions[0];
+    return {
+      homedescription
+    };
+  }, */
+  async asyncData({ params, store }) {
+    if (store.state.home === undefined) {
+      await store.dispatch('getHome');
+    }
+
+    return {
+      home: store.state.home
+    };
   },
   components: {
     ListItem

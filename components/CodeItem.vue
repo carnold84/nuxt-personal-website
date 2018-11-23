@@ -1,10 +1,12 @@
 <template>
   <div class="project">
-    <h2 
-      :class="{title: true, 'is-selected': isSelected}" 
-      @click="onTitleClick">
-      {{ title }}
-    </h2>
+    <nuxt-link
+      :class="{title: true, 'is-selected': isSelected}"
+      :to="formatLink(slug)">
+      <h2>
+        {{ title }}
+      </h2>
+    </nuxt-link>
     <div 
       v-if="isSelected" 
       class="content">
@@ -73,7 +75,7 @@ $title-width: 40%;
 $content-width: 60%;
 
 .project {
-  color: #ffffff;
+  color: $secondary-alt-text-color;
   display: flex;
   flex-shrink: 0;
   margin: 0 0 60px;
@@ -93,22 +95,27 @@ $content-width: 60%;
   }
 
   .title {
-    color: $secondary-text-color;
+    color: $secondary-alt-text-color;
     cursor: pointer;
+    display: block;
     flex-shrink: 0;
-    font-size: 2rem;
-    font-weight: 300;
-    line-height: 2rem;
     margin: 0;
     padding: 0 60px 0 0;
+    transition: all 500ms ease;
     width: $title-width;
 
+    h2 {
+      font-size: 2rem;
+      font-weight: 300;
+      line-height: 2rem;
+    }
+
     &.is-selected {
-      color: $primary-text-color;
+      color: $primary-alt-text-color;
     }
 
     &:hover {
-      color: $primary-text-color;
+      color: $primary-alt-text-color;
     }
   }
 
@@ -126,6 +133,7 @@ $content-width: 60%;
     }
 
     .content-title {
+      color: $primary-alt-text-color;
       flex-shrink: 0;
       font-size: 2rem;
       font-weight: 300;
@@ -146,7 +154,7 @@ $content-width: 60%;
     }
 
     .meta {
-      color: #bbbbbc;
+      color: $secondary-alt-text-color;
       font-size: 1.1rem;
       line-height: 1.4rem;
       font-weight: 300;
