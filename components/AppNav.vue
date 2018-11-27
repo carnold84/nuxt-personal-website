@@ -22,13 +22,13 @@ export default {
   a,
   a:link,
   a:visited {
-    color: $secondary-text-color;
+    color: $text-color2;
     font-size: 13px;
     font-weight: 700;
     text-transform: uppercase;
 
     &:hover {
-      color: $primary-color;
+      color: $color1;
     }
   }
 }

@@ -2,7 +2,12 @@
   <transition name="reveal">
     <div class="wrapper">
       <header class="page-header">
-        <h1 class="page-title">Code / Experiments and Projects</h1>
+        <div class="content-left">
+          <div class="logo">
+            <app-logo />
+          </div>
+          <h1 class="page-title">Code <span class="sub-title">/ Experiments and Projects</span></h1>
+        </div>
         <nuxt-link
           class="close-button"
           to="/">
@@ -17,7 +22,7 @@
       </header>
       <div class="container">
         <code-item
-          v-for="project in code"
+          v-for="project in code.data"
           :codetags="project.codetags"
           :description="project.description"
           :id="project._id"
@@ -25,30 +30,34 @@
           :key="project._id"
           :on-click="onCodeClick"
           :slug="project.slug"
-          :title="project.title"/>
+          :source-url="project.source_url"
+          :source-origin="project.source_origin"
+          :title="project.title"
+          :url="project.url"/>
       </div>
     </div>
   </transition>
 </template>
 
 <script>
+import AppLogo from '~/components/AppLogo.vue';
 import CodeItem from '~/components/CodeItem.vue';
 
 export default {
   async asyncData({ params, store }) {
-    if (store.state.code === undefined) {
+    /* if (store.state.code === undefined) {
       await store.dispatch('getCode');
-    }
+    } */
 
     const code = store.state.code;
 
     let selectedProject = undefined;
 
-    if (code && code.length > 0) {
-      selectedProject = code[0]._id;
+    if (code && code.data && code.data.length > 0) {
+      selectedProject = code.data[0]._id;
 
       if (params.slug) {
-        const project = code.filter(item => {
+        const project = code.data.filter(item => {
           return item.slug === params.slug;
         });
         selectedProject = project[0]._id;
@@ -57,11 +66,25 @@ export default {
 
     return {
       code,
-      selectedProject
+      selectedProject,
+      site: store.state.site
     };
   },
   components: {
+    AppLogo,
     CodeItem
+  },
+  head() {
+    return {
+      title: `${this.site.meta.title} - ${this.code.meta.title}`,
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content: this.code.meta.description
+        }
+      ]
+    };
   },
   methods: {
     isSelected(id) {
@@ -81,7 +104,7 @@ export default {
 @import '@/assets/css/_variables.scss';
 
 .wrapper {
-  background-color: $primary-color-alt;
+  background-color: $color-alt1;
   display: flex;
   height: 100%;
   flex-direction: column;
@@ -112,8 +135,8 @@ export default {
 }
 
 .page-header {
-  display: flex;
   align-items: center;
+  display: flex;
   justify-content: space-between;
   margin: 0 0 60px;
   width: 100%;
@@ -121,20 +144,34 @@ export default {
   .no-js & {
     margin: 0 0 30px;
   }
+
+  .logo {
+    margin: 0 20px 0 0;
+  }
+
+  .content-left {
+    align-items: center;
+    display: flex;
+    fill: $text-color-alt1;
+  }
 }
 
 .page-title {
-  color: $secondary-alt-text-color;
+  color: $text-color-alt1;
   font-size: 1rem;
   letter-spacing: 0.1rem;
   text-transform: uppercase;
+
+  .sub-title {
+    color: $text-color-alt2;
+  }
 }
 
 .close-button {
-  fill: $secondary-alt-text-color;
+  fill: $text-color-alt2;
 
   &:hover {
-    fill: $primary-alt-text-color;
+    fill: $text-color-alt1;
   }
 }
 </style>
