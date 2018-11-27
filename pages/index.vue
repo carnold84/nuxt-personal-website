@@ -31,26 +31,29 @@ export default {
     };
   }, */
   async asyncData({ params, store }) {
-    if (store.state.home === undefined) {
+    /* if (store.state.home === undefined) {
       await store.dispatch('getHome');
-    }
+    } */
 
     return {
-      home: store.state.home
+      home: store.state.home,
+      site: store.state.site
     };
   },
   components: {
     ListItem
   },
-  head: {
-    title: 'Chris Arnold - Designer and Developer',
-    meta: [
-      {
-        hid: 'description',
-        name: 'description',
-        content: 'Chris Arnold - Designer and Developer'
-      }
-    ]
+  head() {
+    return {
+      title: `${this.site.meta.title} - ${this.home.meta.title}`,
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content: this.home.meta.description
+        }
+      ]
+    };
   },
   transition: {
     mode: 'in-out'

@@ -30,6 +30,7 @@ export default {
 .app-header {
   align-items: flex-start;
   display: flex;
+  fill: $text-color1;
   flex-direction: row;
   flex-shrink: 0;
   margin: 0;

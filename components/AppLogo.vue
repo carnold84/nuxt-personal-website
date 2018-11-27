@@ -15,8 +15,6 @@
 </template>
 
 <script>
-import logo from '~/assets/logo.svg';
-
 export default {
   name: 'AppLogo'
 };
@@ -26,12 +24,12 @@ export default {
 @import '@/assets/css/_variables.scss';
 
 .app-logo {
-  fill: $primary-text-color;
+  fill: inherit;
   height: 26px;
   width: 50px;
 
   &:hover {
-    fill: $primary-color;
+    fill: $color1;
   }
 }
 </style>

@@ -13,6 +13,23 @@
       <h2 class="content-title">{{ title }}</h2>
       <p class="description">{{ description }}</p>
       <p class="meta">{{ formatTags(codetags) }}</p>
+      <a
+        :href="url"
+        class="view-btn"
+        rel="noopener"
+        target="_blank">
+        <span class="text">View</span>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="20"
+          height="20"
+          viewBox="0 0 24 24">
+          <path
+            d="M0 0h24v24H0z"
+            fill="none"/>
+          <path d="M19 19H5V5h7V3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z"/>
+        </svg>
+      </a>
     </div>
   </div>
 </template>
@@ -47,7 +64,19 @@ export default {
       required: true,
       type: String
     },
+    source_origin: {
+      default: null,
+      type: String
+    },
+    source_url: {
+      default: null,
+      type: String
+    },
     title: {
+      required: true,
+      type: String
+    },
+    url: {
       required: true,
       type: String
     }
@@ -75,7 +104,7 @@ $title-width: 40%;
 $content-width: 60%;
 
 .project {
-  color: $secondary-alt-text-color;
+  color: $text-color-alt2;
   display: flex;
   flex-shrink: 0;
   margin: 0 0 60px;
@@ -95,7 +124,7 @@ $content-width: 60%;
   }
 
   .title {
-    color: $secondary-alt-text-color;
+    color: $text-color-alt2;
     cursor: pointer;
     display: block;
     flex-shrink: 0;
@@ -111,15 +140,17 @@ $content-width: 60%;
     }
 
     &.is-selected {
-      color: $primary-alt-text-color;
+      color: $text-color-alt1;
     }
 
     &:hover {
-      color: $primary-alt-text-color;
+      color: $text-color-alt1;
     }
   }
 
   .content {
+    align-items: flex-start;
+    display: flex;
     flex-direction: column;
     flex-shrink: 0;
     left: $title-width;
@@ -133,7 +164,7 @@ $content-width: 60%;
     }
 
     .content-title {
-      color: $primary-alt-text-color;
+      color: $text-color-alt1;
       flex-shrink: 0;
       font-size: 2rem;
       font-weight: 300;
@@ -147,6 +178,7 @@ $content-width: 60%;
     }
 
     .description {
+      color: $text-color-alt2;
       font-size: 1.1rem;
       font-weight: 300;
       line-height: 1.6rem;
@@ -154,10 +186,36 @@ $content-width: 60%;
     }
 
     .meta {
-      color: $secondary-alt-text-color;
+      color: $text-color-alt2;
       font-size: 1.1rem;
-      line-height: 1.4rem;
       font-weight: 300;
+      line-height: 1.4rem;
+      margin: 0 0 20px;
+    }
+
+    .view-btn {
+      align-items: center;
+      background-color: transparent;
+      border: 1px solid $text-color-alt3;
+      color: $text-color-alt2;
+      display: flex;
+      fill: $text-color-alt2;
+      font-size: 1.1rem;
+      font-weight: 300;
+      height: 34px;
+      justify-content: center;
+      line-height: 1.4rem;
+      padding: 0 20px;
+
+      .text {
+        margin: 0 5px 0 0;
+      }
+
+      &:hover {
+        border: 1px solid $text-color-alt2;
+        color: $text-color-alt1;
+        fill: $text-color-alt1;
+      }
     }
   }
 }
