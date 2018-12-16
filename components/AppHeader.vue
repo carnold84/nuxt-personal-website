@@ -2,7 +2,7 @@
   <div class="app-header">
     <div class="content">
       <div class="content-start">
-        <nuxt-link to="/"><AppLogo /></nuxt-link>
+        <AppLogo />
       </div>
       <div class="content-end">
         <app-nav/>

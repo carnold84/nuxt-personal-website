@@ -1,6 +1,11 @@
 <template>
   <ul class="app-nav">
-    <li class="nav-item"><nuxt-link to="/code">Code</nuxt-link></li>
+    <li class="nav-item">
+      <nuxt-link
+        to="/code"
+        title="Code"
+      >Code</nuxt-link>
+    </li>
   </ul>
 </template>
 
