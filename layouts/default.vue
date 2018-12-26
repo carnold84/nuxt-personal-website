@@ -1,6 +1,6 @@
 <template>
   <div id="app-wrapper">
-    <app-header />
+    <app-header/>
     <div class="app-content">
       <nuxt/>
     </div>
@@ -20,8 +20,7 @@ export default {
 <style lang="scss">
 html {
   box-sizing: border-box;
-  font-family: 'Open Sans', Roboto, -apple-system, BlinkMacSystemFont,
-    'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+  font-family: 'Open Sans', Roboto, Helvetica, Arial, sans-serif;
   font-size: 14px;
   font-weight: 400;
   line-height: 20px;
@@ -43,8 +42,7 @@ h1,
 h2,
 h3,
 h4 {
-  font-family: 'Montserrat', Roboto, -apple-system, BlinkMacSystemFont,
-    'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+  font-family: 'Montserrat', 'Open Sans', Roboto, Helvetica, Arial, sans-serif;
 }
 
 a,

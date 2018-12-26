@@ -28,8 +28,8 @@ export default {
   a:link,
   a:visited {
     color: $text-color2;
-    font-size: 13px;
-    font-weight: 700;
+    font-size: 14px;
+    font-weight: 400;
     text-transform: uppercase;
 
     &:hover {

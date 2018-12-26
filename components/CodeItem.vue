@@ -1,11 +1,9 @@
 <template>
   <div class="project">
     <nuxt-link
-      :class="{title: true, 'is-selected': isSelected}"
+      :class="{title: true, 'is-selected': isSelected}" 
       :to="formatLink(slug)">
-      <h2>
-        {{ title }}
-      </h2>
+      <h2>{{ title }}</h2>
     </nuxt-link>
     <div 
       v-if="isSelected" 
@@ -13,22 +11,24 @@
       <h2 class="content-title">{{ title }}</h2>
       <p class="description">{{ description }}</p>
       <p class="meta">{{ formatTags(codetags) }}</p>
-      <a
-        :href="url"
-        class="view-btn"
-        rel="noopener"
+      <a 
+        :href="url" 
+        class="view-btn" 
+        rel="noopener" 
         target="_blank">
-        <span class="text">View</span>
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="20"
-          height="20"
+        <svg 
+          xmlns="http://www.w3.org/2000/svg" 
+          width="18" 
+          height="18" 
           viewBox="0 0 24 24">
-          <path
-            d="M0 0h24v24H0z"
+          <path 
+            d="M0 0h24v24H0z" 
             fill="none"/>
-          <path d="M19 19H5V5h7V3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z"/>
+          <path
+            d="M19 19H5V5h7V3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z"
+          />
         </svg>
+        <span class="text">View</span>
       </a>
     </div>
   </div>
@@ -135,7 +135,7 @@ $content-width: 60%;
 
     h2 {
       font-size: 2rem;
-      font-weight: 300;
+      font-weight: 400;
       line-height: 2rem;
     }
 
@@ -167,7 +167,7 @@ $content-width: 60%;
       color: $text-color-alt1;
       flex-shrink: 0;
       font-size: 2rem;
-      font-weight: 300;
+      font-weight: 400;
       line-height: 2.4rem;
       margin: 0 0 20px;
       width: 100%;
@@ -180,7 +180,7 @@ $content-width: 60%;
     .description {
       color: $text-color-alt2;
       font-size: 1.1rem;
-      font-weight: 300;
+      font-weight: 400;
       line-height: 1.6rem;
       margin: 0 0 10px;
     }
@@ -188,33 +188,30 @@ $content-width: 60%;
     .meta {
       color: $text-color-alt2;
       font-size: 1.1rem;
-      font-weight: 300;
+      font-weight: 400;
       line-height: 1.4rem;
-      margin: 0 0 20px;
+      margin: 0 0 30px;
     }
 
     .view-btn {
       align-items: center;
       background-color: transparent;
-      border: 1px solid $text-color-alt3;
-      color: $text-color-alt2;
+      border: none;
+      color: $text-color-alt1;
       display: flex;
-      fill: $text-color-alt2;
-      font-size: 1.1rem;
-      font-weight: 300;
-      height: 34px;
+      fill: $text-color-alt1;
+      font-size: 1.2rem;
+      font-weight: 400;
       justify-content: center;
       line-height: 1.4rem;
-      padding: 0 20px;
 
-      .text {
-        margin: 0 5px 0 0;
+      svg {
+        margin: 0 8px 0 0;
       }
 
       &:hover {
-        border: 1px solid $text-color-alt2;
-        color: $text-color-alt1;
-        fill: $text-color-alt1;
+        color: $color1;
+        fill: $color1;
       }
     }
   }
