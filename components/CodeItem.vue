@@ -1,34 +1,34 @@
 <template>
-  <div class="project">
-    <nuxt-link
-      :class="{title: true, 'is-selected': isSelected}"
+  <div class="code-item">
+    <nuxt-link 
+      :class="{title: true, 'is-selected': isSelected}" 
       :to="formatLink(slug)">
-      <h2>
-        {{ title }}
-      </h2>
+      <h2>{{ title }}</h2>
     </nuxt-link>
     <div 
       v-if="isSelected" 
       class="content">
-      <h2 class="content-title">{{ title }}</h2>
-      <p class="description">{{ description }}</p>
-      <p class="meta">{{ formatTags(codetags) }}</p>
-      <a
-        :href="url"
-        class="view-btn"
-        rel="noopener"
+      <!-- <h2 class="content-title">{{ title }}</h2> -->
+      <p class="content-description">{{ description }}</p>
+      <p class="content-meta">{{ formatTags(codetags) }}</p>
+      <a 
+        :href="url" 
+        class="view-btn" 
+        rel="noopener" 
         target="_blank">
-        <span class="text">View</span>
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="20"
-          height="20"
+        <svg 
+          xmlns="http://www.w3.org/2000/svg" 
+          width="18" 
+          height="18" 
           viewBox="0 0 24 24">
-          <path
-            d="M0 0h24v24H0z"
+          <path 
+            d="M0 0h24v24H0z" 
             fill="none"/>
-          <path d="M19 19H5V5h7V3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z"/>
+          <path
+            d="M19 19H5V5h7V3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z"
+          />
         </svg>
+        <span class="text">View</span>
       </a>
     </div>
   </div>
@@ -100,15 +100,23 @@ export default {
 
 <style scoped lang="scss">
 @import '@/assets/css/_variables.scss';
-$title-width: 40%;
-$content-width: 60%;
 
-.project {
-  color: $text-color-alt2;
+.code-item {
+  --title-width: 40%;
+  --content-width: 60%;
+
+  color: var(--text-color-alt2);
   display: flex;
+  flex-direction: column;
   flex-shrink: 0;
   margin: 0 0 60px;
   width: 100%;
+
+  @include breakpoint('mobile') {
+    --title-width: 100%;
+    --content-width: 100%;
+    margin: 0 0 20px;
+  }
 
   .no-js & {
     flex-direction: column;
@@ -124,27 +132,32 @@ $content-width: 60%;
   }
 
   .title {
-    color: $text-color-alt2;
+    color: var(--text-color-alt2);
     cursor: pointer;
     display: block;
     flex-shrink: 0;
     margin: 0;
     padding: 0 60px 0 0;
     transition: all 500ms ease;
-    width: $title-width;
+    width: var(--title-width);
 
     h2 {
       font-size: 2rem;
-      font-weight: 300;
-      line-height: 2rem;
+      font-weight: 400;
+      line-height: 2.8rem;
     }
 
     &.is-selected {
-      color: $text-color-alt1;
+      color: var(--text-color-alt1);
     }
 
     &:hover {
-      color: $text-color-alt1;
+      color: var(--text-color-alt1);
+    }
+
+    @include breakpoint('mobile') {
+      margin: 0 0 10px;
+      padding: 0;
     }
   }
 
@@ -153,69 +166,80 @@ $content-width: 60%;
     display: flex;
     flex-direction: column;
     flex-shrink: 0;
-    left: $title-width;
+    left: var(--title-width);
     position: absolute;
     top: 0;
-    width: $content-width;
+    width: var(--content-width);
 
     .no-js & {
       position: relative;
       display: block;
     }
 
-    .content-title {
-      color: $text-color-alt1;
-      flex-shrink: 0;
-      font-size: 2rem;
-      font-weight: 300;
-      line-height: 2.4rem;
-      margin: 0 0 20px;
-      width: 100%;
-
-      .no-js & {
-        margin: 0 0 10px;
-      }
+    @include breakpoint('mobile') {
+      left: 0;
+      position: relative;
+      display: block;
     }
+  }
 
-    .description {
-      color: $text-color-alt2;
-      font-size: 1.1rem;
-      font-weight: 300;
-      line-height: 1.6rem;
+  .content-title {
+    color: var(--text-color-alt1);
+    flex-shrink: 0;
+    font-size: 2rem;
+    font-weight: 400;
+    line-height: 2.4rem;
+    margin: 0 0 20px;
+    width: 100%;
+
+    .no-js & {
       margin: 0 0 10px;
     }
+  }
 
-    .meta {
-      color: $text-color-alt2;
-      font-size: 1.1rem;
-      font-weight: 300;
-      line-height: 1.4rem;
-      margin: 0 0 20px;
+  .content-description {
+    color: var(--text-color-alt2);
+    font-size: 1.1rem;
+    font-weight: 400;
+    line-height: 1.6rem;
+    margin: 0 0 10px;
+  }
+
+  .content-meta {
+    color: var(--text-color-alt2);
+    font-size: 1.1rem;
+    font-weight: 400;
+    line-height: 1.4rem;
+    margin: 0 0 30px;
+
+    @include breakpoint('mobile') {
+      margin: 0 0 15px;
+    }
+  }
+
+  .view-btn {
+    align-items: center;
+    background-color: transparent;
+    border: none;
+    color: var(--text-color-alt1);
+    display: flex;
+    fill: var(--text-color-alt1);
+    font-size: 1.2rem;
+    font-weight: 400;
+    justify-content: center;
+    line-height: 1.4rem;
+
+    svg {
+      margin: 0 8px 0 0;
     }
 
-    .view-btn {
-      align-items: center;
-      background-color: transparent;
-      border: 1px solid $text-color-alt3;
-      color: $text-color-alt2;
-      display: flex;
-      fill: $text-color-alt2;
-      font-size: 1.1rem;
-      font-weight: 300;
-      height: 34px;
-      justify-content: center;
-      line-height: 1.4rem;
-      padding: 0 20px;
+    &:hover {
+      color: var(--color1);
+      fill: var(--color1);
+    }
 
-      .text {
-        margin: 0 5px 0 0;
-      }
-
-      &:hover {
-        border: 1px solid $text-color-alt2;
-        color: $text-color-alt1;
-        fill: $text-color-alt1;
-      }
+    @include breakpoint('mobile') {
+      display: inline-flex;
     }
   }
 }

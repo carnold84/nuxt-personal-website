@@ -4,19 +4,24 @@
       <header class="page-header">
         <div class="content-left">
           <div class="logo">
-            <app-logo />
+            <app-logo/>
           </div>
-          <h1 class="page-title">Code <span class="sub-title">/ Experiments and Projects</span></h1>
+          <h1 class="page-title">
+            Code
+            <span class="sub-title">/ Experiments and Projects</span>
+          </h1>
         </div>
-        <nuxt-link
-          class="close-button"
+        <nuxt-link 
+          class="close-button" 
           to="/">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
+          <svg 
+            xmlns="http://www.w3.org/2000/svg" 
+            width="24" 
+            height="24" 
             viewBox="0 0 24 24">
-            <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
+            <path
+              d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"
+            />
           </svg>
         </nuxt-link>
       </header>
@@ -33,7 +38,8 @@
           :source-url="project.source_url"
           :source-origin="project.source_origin"
           :title="project.title"
-          :url="project.url"/>
+          :url="project.url"
+        />
       </div>
     </div>
   </transition>
@@ -104,16 +110,21 @@ export default {
 @import '@/assets/css/_variables.scss';
 
 .wrapper {
-  background-color: $color-alt1;
+  background-color: var(--color-alt1);
   display: flex;
   height: 100%;
   flex-direction: column;
   flex-grow: 1;
+  overflow: auto;
   padding: 60px;
   position: absolute;
   transition: all 500ms ease-in-out;
   width: 100%;
   z-index: 1;
+
+  @include breakpoint('mobile') {
+    padding: 30px;
+  }
 
   &.page-enter-active,
   &.page-leave-active {
@@ -132,11 +143,16 @@ export default {
 
 .container {
   position: relative;
+
+  @include breakpoint('mobile') {
+    padding: 0 30px;
+  }
 }
 
 .page-header {
   align-items: center;
   display: flex;
+  flex-shrink: 0;
   justify-content: space-between;
   margin: 0 0 60px;
   width: 100%;
@@ -146,32 +162,38 @@ export default {
   }
 
   .logo {
-    margin: 0 20px 0 0;
+    margin: 0 30px 0 0;
   }
 
   .content-left {
     align-items: center;
     display: flex;
-    fill: $text-color-alt1;
+    fill: var(--text-color-alt1);
   }
 }
 
 .page-title {
-  color: $text-color-alt1;
+  color: var(--text-color-alt1);
   font-size: 1rem;
   letter-spacing: 0.1rem;
   text-transform: uppercase;
 
   .sub-title {
-    color: $text-color-alt2;
+    color: var(--text-color-alt2);
+
+    @include breakpoint('mobile') {
+      display: none;
+    }
   }
 }
 
 .close-button {
-  fill: $text-color-alt2;
+  align-items: center;
+  display: flex;
+  fill: var(--text-color-alt2);
 
   &:hover {
-    fill: $text-color-alt1;
+    fill: var(--text-color-alt1);
   }
 }
 </style>

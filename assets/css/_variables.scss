@@ -1,34 +1,19 @@
-$color1: #a8c10a;
-$color-alt1: #1c2227;
-$text-color1: #333333;
-$text-color2: #666666;
-$text-color3: #999999;
-$text-color-alt1: #ffffff;
-$text-color-alt2: #a6b2b9;
-$text-color-alt3: #627077;
-
-$breakpoints: (
-  'mobile': (
-    min-width: 481px,
-  ),
-  'tablet': (
-    min-width: 737px,
-  ),
-  'desktop': (
-    min-width: 1025px,
-  ),
-);
 @mixin breakpoint($name) {
-  // If the key exists in the map
-  @if map-has-key($breakpoints, $name) {
-    // Prints a media query based on the value
-    @media #{inspect(map-get($breakpoints, $name))} {
+  @if $name == 'mobile' {
+    @media (min-width: 0px) and (max-width: 640px) {
       @content;
     }
   }
-  // If the key doesn't exist in the map
-  @else {
-    @warn "Unfortunately, no value could be retrieved from `#{$breakpoint}`. "
-        + "Please make sure it is defined in `$breakpoints` map.";
+
+  @if $name == 'tablet' {
+    @media (min-width: 641px) and (max-width: 1024px) {
+      @content;
+    }
+  }
+
+  @if $name == 'desktop' {
+    @media (min-width: 1025px) {
+      @content;
+    }
   }
 }

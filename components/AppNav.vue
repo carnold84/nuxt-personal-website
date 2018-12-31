@@ -1,6 +1,11 @@
 <template>
   <ul class="app-nav">
-    <li class="nav-item"><nuxt-link to="/code">Code</nuxt-link></li>
+    <li class="nav-item">
+      <nuxt-link
+        to="/code"
+        title="Code"
+      >Code</nuxt-link>
+    </li>
   </ul>
 </template>
 
@@ -22,13 +27,13 @@ export default {
   a,
   a:link,
   a:visited {
-    color: $text-color2;
-    font-size: 13px;
-    font-weight: 700;
+    color: var(--text-color2);
+    font-size: 14px;
+    font-weight: 400;
     text-transform: uppercase;
 
     &:hover {
-      color: $color1;
+      color: var(--color1);
     }
   }
 }
