@@ -144,7 +144,7 @@ export default {
     h2 {
       font-size: 2rem;
       font-weight: 400;
-      line-height: 2.5rem;
+      line-height: 2.8rem;
     }
 
     &.is-selected {
@@ -178,11 +178,6 @@ export default {
 
     @include breakpoint('mobile') {
       left: 0;
-      position: relative;
-      display: block;
-    }
-
-    @include breakpoint('tablet') {
       position: relative;
       display: block;
     }
