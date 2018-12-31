@@ -30,7 +30,7 @@ export default {
 .app-header {
   align-items: flex-start;
   display: flex;
-  fill: $text-color1;
+  fill: var(--text-color1);
   flex-direction: row;
   flex-shrink: 0;
   margin: 0;
@@ -38,6 +38,11 @@ export default {
   position: fixed;
   width: 100%;
   z-index: 1;
+
+  @include breakpoint('mobile') {
+    padding: 40px 40px 0;
+    position: relative;
+  }
 }
 
 .content {

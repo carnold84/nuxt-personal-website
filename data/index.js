@@ -81,13 +81,15 @@ export default {
   home: {
     _id: '5bee83a00a60a63ce4ec320f',
     description:
-      "I'm Chris Arnold, a designer and developer from Christchurch, New Zealand. I like to write clean, elegant code and partner it with clean, beautiful design and well thought out, user-friendly interfaces. I work mainly in Javascript, HTML and CSS and enjoy exploring new frameworks, tools and, mostly, new paradigms in code, design and UX.",
-    sub_title: 'UI Designer and Developer',
-    title: 'Chris Arnold',
+      "I'm Chris Arnold, a front-end developer and designer in Christchurch, New Zealand. I like to write clean, elegant, functional code and partner it with clean, beautiful design and well thought out, user-friendly interfaces.",
+    more:
+      'I work mainly in Javascript, HTML and CSS and enjoy exploring new frameworks, tools and, mostly, new paradigms in code, design and UX.',
+    sub_title: 'Front-end Developer and UI Designer',
+    title: 'Hello,',
     meta: {
-      title: 'Designer and Developer',
+      title: 'Chris Arnold - Front-end Developer and Designer',
       description:
-        'Designer and developer in Javascript, HTML, CSS, React, Vue, Node and much more.'
+        'Chris Arnold - Front-end developer and designer working in Javascript, HTML, CSS, React, Vue, Node and much more.'
     }
   },
   site: {

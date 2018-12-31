@@ -1,6 +1,6 @@
 <template>
-  <div class="project">
-    <nuxt-link
+  <div class="code-item">
+    <nuxt-link 
       :class="{title: true, 'is-selected': isSelected}" 
       :to="formatLink(slug)">
       <h2>{{ title }}</h2>
@@ -8,9 +8,9 @@
     <div 
       v-if="isSelected" 
       class="content">
-      <h2 class="content-title">{{ title }}</h2>
-      <p class="description">{{ description }}</p>
-      <p class="meta">{{ formatTags(codetags) }}</p>
+      <!-- <h2 class="content-title">{{ title }}</h2> -->
+      <p class="content-description">{{ description }}</p>
+      <p class="content-meta">{{ formatTags(codetags) }}</p>
       <a 
         :href="url" 
         class="view-btn" 
@@ -100,15 +100,23 @@ export default {
 
 <style scoped lang="scss">
 @import '@/assets/css/_variables.scss';
-$title-width: 40%;
-$content-width: 60%;
 
-.project {
-  color: $text-color-alt2;
+.code-item {
+  --title-width: 40%;
+  --content-width: 60%;
+
+  color: var(--text-color-alt2);
   display: flex;
+  flex-direction: column;
   flex-shrink: 0;
   margin: 0 0 60px;
   width: 100%;
+
+  @include breakpoint('mobile') {
+    --title-width: 100%;
+    --content-width: 100%;
+    margin: 0 0 20px;
+  }
 
   .no-js & {
     flex-direction: column;
@@ -124,27 +132,32 @@ $content-width: 60%;
   }
 
   .title {
-    color: $text-color-alt2;
+    color: var(--text-color-alt2);
     cursor: pointer;
     display: block;
     flex-shrink: 0;
     margin: 0;
     padding: 0 60px 0 0;
     transition: all 500ms ease;
-    width: $title-width;
+    width: var(--title-width);
 
     h2 {
       font-size: 2rem;
       font-weight: 400;
-      line-height: 2rem;
+      line-height: 2.5rem;
     }
 
     &.is-selected {
-      color: $text-color-alt1;
+      color: var(--text-color-alt1);
     }
 
     &:hover {
-      color: $text-color-alt1;
+      color: var(--text-color-alt1);
+    }
+
+    @include breakpoint('mobile') {
+      margin: 0 0 10px;
+      padding: 0;
     }
   }
 
@@ -153,66 +166,85 @@ $content-width: 60%;
     display: flex;
     flex-direction: column;
     flex-shrink: 0;
-    left: $title-width;
+    left: var(--title-width);
     position: absolute;
     top: 0;
-    width: $content-width;
+    width: var(--content-width);
 
     .no-js & {
       position: relative;
       display: block;
     }
 
-    .content-title {
-      color: $text-color-alt1;
-      flex-shrink: 0;
-      font-size: 2rem;
-      font-weight: 400;
-      line-height: 2.4rem;
-      margin: 0 0 20px;
-      width: 100%;
-
-      .no-js & {
-        margin: 0 0 10px;
-      }
+    @include breakpoint('mobile') {
+      left: 0;
+      position: relative;
+      display: block;
     }
 
-    .description {
-      color: $text-color-alt2;
-      font-size: 1.1rem;
-      font-weight: 400;
-      line-height: 1.6rem;
+    @include breakpoint('tablet') {
+      position: relative;
+      display: block;
+    }
+  }
+
+  .content-title {
+    color: var(--text-color-alt1);
+    flex-shrink: 0;
+    font-size: 2rem;
+    font-weight: 400;
+    line-height: 2.4rem;
+    margin: 0 0 20px;
+    width: 100%;
+
+    .no-js & {
       margin: 0 0 10px;
     }
+  }
 
-    .meta {
-      color: $text-color-alt2;
-      font-size: 1.1rem;
-      font-weight: 400;
-      line-height: 1.4rem;
-      margin: 0 0 30px;
+  .content-description {
+    color: var(--text-color-alt2);
+    font-size: 1.1rem;
+    font-weight: 400;
+    line-height: 1.6rem;
+    margin: 0 0 10px;
+  }
+
+  .content-meta {
+    color: var(--text-color-alt2);
+    font-size: 1.1rem;
+    font-weight: 400;
+    line-height: 1.4rem;
+    margin: 0 0 30px;
+
+    @include breakpoint('mobile') {
+      margin: 0 0 15px;
+    }
+  }
+
+  .view-btn {
+    align-items: center;
+    background-color: transparent;
+    border: none;
+    color: var(--text-color-alt1);
+    display: flex;
+    fill: var(--text-color-alt1);
+    font-size: 1.2rem;
+    font-weight: 400;
+    justify-content: center;
+    line-height: 1.4rem;
+
+    svg {
+      margin: 0 8px 0 0;
     }
 
-    .view-btn {
-      align-items: center;
-      background-color: transparent;
-      border: none;
-      color: $text-color-alt1;
-      display: flex;
-      fill: $text-color-alt1;
-      font-size: 1.2rem;
-      font-weight: 400;
-      justify-content: center;
-      line-height: 1.4rem;
+    &:hover {
+      color: var(--color1);
+      fill: var(--color1);
+    }
 
-      svg {
-        margin: 0 8px 0 0;
-      }
-
-      &:hover {
-        color: $color1;
-        fill: $color1;
-      }
+    @include breakpoint('mobile') {
+      display: inline-flex;
     }
   }
 }

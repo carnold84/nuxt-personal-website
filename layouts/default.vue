@@ -1,6 +1,5 @@
 <template>
   <div id="app-wrapper">
-    <app-header/>
     <div class="app-content">
       <nuxt/>
     </div>
@@ -18,6 +17,17 @@ export default {
 </script>
 
 <style lang="scss">
+:root {
+  --color1: #a8c10a;
+  --color-alt1: #1c2227;
+  --text-color1: #333333;
+  --text-color2: #666666;
+  --text-color3: #999999;
+  --text-color-alt1: #ffffff;
+  --text-color-alt2: #a6b2b9;
+  --text-color-alt3: #627077;
+}
+
 html {
   box-sizing: border-box;
   font-family: 'Open Sans', Roboto, Helvetica, Arial, sans-serif;
@@ -42,7 +52,7 @@ h1,
 h2,
 h3,
 h4 {
-  font-family: 'Montserrat', 'Open Sans', Roboto, Helvetica, Arial, sans-serif;
+  font-family: 'Open Sans', Roboto, Helvetica, Arial, sans-serif;
 }
 
 a,
