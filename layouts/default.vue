@@ -25,7 +25,7 @@ export default {
   --text-color3: #999999;
   --text-color-alt1: #ffffff;
   --text-color-alt2: #a6b2b9;
-  --text-color-alt3: #627077;
+  --text-color-alt3: #718087;
 }
 
 html {

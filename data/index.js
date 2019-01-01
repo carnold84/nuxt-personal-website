@@ -25,7 +25,7 @@ export default {
       },
       {
         _id: '5b276b0e95d29545cccb85e0',
-        codetags: [{ title: 'React' }],
+        codetags: [{ title: 'React' }, { title: 'Next.js' }],
         description:
           'Photos app built using React, Next.js, and the responsive <picture> element.',
         slug: 'react-photos',
