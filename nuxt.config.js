@@ -31,6 +31,13 @@ module.exports = {
   */
   loading: { color: '#a8c10a' },
 
+  manifest: {
+    description: 'Chris Arnold - Front-end Developer and Designer',
+    name: 'ChrisArnold.io',
+    lang: 'en',
+    short_name: 'Chris Arnold'
+  },
+
   /*
   ** Global CSS
   */
