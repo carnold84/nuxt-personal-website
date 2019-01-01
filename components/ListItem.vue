@@ -36,7 +36,7 @@ export default {
 
 
 <style scoped lang="scss">
-@import '@/assets/css/_variables.scss';
+@import '@/assets/css/_breakpoint.scss';
 
 .link {
   display: flex;

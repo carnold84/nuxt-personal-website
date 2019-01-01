@@ -8,9 +8,9 @@
     <div 
       v-if="isSelected" 
       class="content">
-      <!-- <h2 class="content-title">{{ title }}</h2> -->
+      <h2 class="content-title">{{ title }}</h2>
       <p class="content-description">{{ description }}</p>
-      <p class="content-meta">{{ formatTags(codetags) }}</p>
+      <p class="content-meta"><span>Tags:</span> {{ formatTags(codetags) }}</p>
       <a 
         :href="url" 
         class="view-btn" 
@@ -18,8 +18,8 @@
         target="_blank">
         <svg 
           xmlns="http://www.w3.org/2000/svg" 
-          width="18" 
-          height="18" 
+          width="20" 
+          height="20" 
           viewBox="0 0 24 24">
           <path 
             d="M0 0h24v24H0z" 
@@ -99,7 +99,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
-@import '@/assets/css/_variables.scss';
+@import '@/assets/css/_breakpoint.scss';
 
 .code-item {
   --title-width: 40%;
@@ -189,11 +189,15 @@ export default {
     font-size: 2rem;
     font-weight: 400;
     line-height: 2.4rem;
-    margin: 0 0 20px;
+    margin: 0 0 10px;
     width: 100%;
 
     .no-js & {
       margin: 0 0 10px;
+    }
+
+    @include breakpoint('mobile') {
+      display: none;
     }
   }
 
@@ -206,6 +210,10 @@ export default {
   }
 
   .content-meta {
+    span {
+      color: var(--text-color-alt3);
+    }
+
     color: var(--text-color-alt2);
     font-size: 1.1rem;
     font-weight: 400;

@@ -25,7 +25,7 @@ export default {
       },
       {
         _id: '5b276b0e95d29545cccb85e0',
-        codetags: [{ title: 'React' }],
+        codetags: [{ title: 'React' }, { title: 'Next.js' }],
         description:
           'Photos app built using React, Next.js, and the responsive <picture> element.',
         slug: 'react-photos',
@@ -87,7 +87,7 @@ export default {
     sub_title: 'Front-end Developer and UI Designer',
     title: 'Hello,',
     meta: {
-      title: 'Chris Arnold - Front-end Developer and Designer',
+      title: 'Front-end Developer and Designer',
       description:
         'Chris Arnold - Front-end developer and designer working in Javascript, HTML, CSS, React, Vue, Node and much more.'
     }

@@ -1,7 +1,7 @@
 {
-  "name": "vue-personal-site",
+  "name": "nuxt-personal-site",
   "version": "1.0.0",
-  "description": "My well-made Nuxt.js project",
+  "description": "Personal Site",
   "author": "Chris Arnold",
   "private": true,
   "scripts": {

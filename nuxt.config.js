@@ -11,7 +11,11 @@ module.exports = {
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: pkg.description }
+      {
+        hid: 'og:site_name',
+        name: 'og:site_name',
+        content: 'Chris Arnold - Front-end Developer and Designer'
+      }
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.png' },
@@ -26,6 +30,13 @@ module.exports = {
   ** Customize the progress-bar color
   */
   loading: { color: '#a8c10a' },
+
+  manifest: {
+    description: 'Chris Arnold - Front-end Developer and Designer',
+    name: 'ChrisArnold.io',
+    lang: 'en',
+    short_name: 'Chris Arnold'
+  },
 
   /*
   ** Global CSS
