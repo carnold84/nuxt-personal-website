@@ -85,7 +85,6 @@ export default {
     CodeItem
   },
   head() {
-    console.log(this.code);
     return {
       title: `${this.code.meta.title} - ${this.currentProject.title}`,
       meta: [
