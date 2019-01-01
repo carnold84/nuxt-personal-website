@@ -57,21 +57,25 @@ export default {
 
     const code = store.state.code;
 
+    let currentProject = undefined;
     let selectedProject = undefined;
 
     if (code && code.data && code.data.length > 0) {
-      selectedProject = code.data[0]._id;
+      currentProject = code.data[0];
 
       if (params.slug) {
         const project = code.data.filter(item => {
           return item.slug === params.slug;
         });
-        selectedProject = project[0]._id;
+        currentProject = project[0];
       }
+
+      selectedProject = currentProject._id;
     }
 
     return {
       code,
+      currentProject,
       selectedProject,
       site: store.state.site
     };
@@ -81,13 +85,24 @@ export default {
     CodeItem
   },
   head() {
+    console.log(this.code);
     return {
-      title: `${this.site.meta.title} - ${this.code.meta.title}`,
+      title: `${this.code.meta.title} - ${this.currentProject.title}`,
       meta: [
         {
           hid: 'description',
           name: 'description',
-          content: this.code.meta.description
+          content: this.currentProject.description
+        },
+        {
+          hid: 'og:description',
+          name: 'og:description',
+          content: this.currentProject.description
+        },
+        {
+          hid: 'og:title',
+          name: 'og:title',
+          content: `${this.code.meta.title} - ${this.currentProject.title}`
         }
       ]
     };
@@ -123,7 +138,7 @@ export default {
   z-index: 1;
 
   @include breakpoint('mobile') {
-    padding: 30px;
+    padding: 40px;
   }
 
   &.page-enter-active,
@@ -145,7 +160,7 @@ export default {
   position: relative;
 
   @include breakpoint('mobile') {
-    padding: 0 30px;
+    padding: 0 20px;
   }
 }
 

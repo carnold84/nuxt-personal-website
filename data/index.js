@@ -87,7 +87,7 @@ export default {
     sub_title: 'Front-end Developer and UI Designer',
     title: 'Hello,',
     meta: {
-      title: 'Chris Arnold - Front-end Developer and Designer',
+      title: 'Front-end Developer and Designer',
       description:
         'Chris Arnold - Front-end developer and designer working in Javascript, HTML, CSS, React, Vue, Node and much more.'
     }

@@ -53,6 +53,16 @@ export default {
           hid: 'description',
           name: 'description',
           content: this.home.meta.description
+        },
+        {
+          hid: 'og:description',
+          name: 'og:description',
+          content: this.home.meta.description
+        },
+        {
+          hid: 'og:title',
+          name: 'og:title',
+          content: `${this.site.meta.title} - ${this.home.meta.title}`
         }
       ]
     };
