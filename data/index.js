@@ -2,8 +2,19 @@ export default {
   code: {
     data: [
       {
+        _id: '3274d8e3-e64b-4f5a-96ce-29ed9715f489',
+        codetags: [{ title: 'Vue.js' }, { title: 'LocalForage' }],
+        description:
+          'A simple, straight-forward task manager web app that is specifically designed to be offline. Uses localForage to store tasks in IndexedDB or WebSQL (falls back to localStorage).',
+        slug: 'task-hound',
+        source_url: 'https://github.com/carnold84/task-manager',
+        source_origin: 'GitHub',
+        title: 'TaskHound',
+        url: 'https://carnold84.github.io/task-manager'
+      },
+      {
         _id: '5b24c10fb1838e0f9077774f',
-        codetags: [{ title: 'Vue.js' }, { title: 'AngularJS' }],
+        codetags: [{ title: 'Vue.js' }],
         description:
           'App to catalog books. Built to be used in an Electron desktop app and as a web app. Uses local storage by default, but the api file is loaded in dynamically so it can easily be swapped out.',
         slug: 'vue-books',

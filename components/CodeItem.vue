@@ -1,28 +1,28 @@
 <template>
   <div class="code-item">
-    <nuxt-link 
-      :class="{title: true, 'is-selected': isSelected}" 
+    <nuxt-link
+      :class="{title: true, 'is-selected': isSelected}"
       :to="formatLink(slug)">
       <h2>{{ title }}</h2>
     </nuxt-link>
-    <div 
-      v-if="isSelected" 
+    <div
+      v-if="isSelected"
       class="content">
       <h2 class="content-title">{{ title }}</h2>
       <p class="content-description">{{ description }}</p>
       <p class="content-meta"><span>Tags:</span> {{ formatTags(codetags) }}</p>
-      <a 
-        :href="url" 
-        class="view-btn" 
-        rel="noopener" 
+      <a
+        :href="url"
+        class="view-btn"
+        rel="noopener"
         target="_blank">
-        <svg 
-          xmlns="http://www.w3.org/2000/svg" 
-          width="20" 
-          height="20" 
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="20"
+          height="20"
           viewBox="0 0 24 24">
-          <path 
-            d="M0 0h24v24H0z" 
+          <path
+            d="M0 0h24v24H0z"
             fill="none"/>
           <path
             d="M19 19H5V5h7V3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z"
@@ -109,7 +109,7 @@ export default {
   display: flex;
   flex-direction: column;
   flex-shrink: 0;
-  margin: 0 0 60px;
+  margin: 0 0 34px;
   width: 100%;
 
   @include breakpoint('mobile') {
@@ -238,7 +238,7 @@ export default {
     line-height: 1.4rem;
 
     svg {
-      margin: 0 8px 0 0;
+      margin: 1px 8px 0 0;
     }
 
     &:hover {
